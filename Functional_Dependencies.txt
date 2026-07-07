@@ -1,0 +1,81 @@
+﻿FUNCTIONAL DEPENDENCIES
+1. Toll_Plaza
+Primary Functional Dependency:
+Plaza_ID → Plaza_Name, Location, Highway_Name, Number_of_Lanes, Contact_Number
+________________
+
+
+2. Toll_Booth
+Primary Functional Dependency:
+Booth_ID → Plaza_ID, Booth_Number, Status
+Alternate Key Functional Dependency:
+(Plaza_ID, Booth_Number) → Booth_ID
+This alternate key applies when Booth_Number is unique within each toll plaza.
+________________
+
+
+3. Staff
+Primary Functional Dependency:
+Staff_ID → Staff_Name, Role, Salary, Booth_ID, Shift_Start, Shift_End
+________________
+
+
+4. Staff_Plaza
+Composite Key:
+(Staff_ID, Plaza_ID) → No non-key attributes
+________________
+
+
+5. Toll_Rate
+Primary Functional Dependency:
+Rate_ID → Plaza_ID, Vehicle_Type, Toll_Amount
+Alternate Key Functional Dependency:
+(Plaza_ID, Vehicle_Type) → Rate_ID, Toll_Amount
+________________
+
+
+6. Vehicle
+Primary Functional Dependency:
+Vehicle_ID → Vehicle_Number, Vehicle_Type, Owner_Name, Owner_Contact_Number
+________________
+
+
+7. Transaction
+Primary Functional Dependency:
+Transaction_ID → Vehicle_ID, Booth_ID, Transaction_Time, Amount_Paid, Payment_Mode
+________________
+
+
+8. Monthly_Pass
+Primary Functional Dependency:
+Pass_ID → Vehicle_ID, Plaza_ID, Expiry_Date, Pass_Fee
+________________
+
+
+9. Fastag_Account
+Primary Functional Dependency:
+Fastag_ID → Vehicle_ID, Balance, Bank_Name
+________________
+
+
+10. Violation
+Primary Functional Dependency:
+Violation_ID → Vehicle_ID, Plaza_ID, Violation_Type, Violation_Date, Penalty_Amount
+________________
+
+
+11. Transaction_Pass
+Composite Key:
+(Transaction_ID, Pass_ID) → No non-key attributes
+________________
+
+
+12. Transaction_Fastag
+Composite Key:
+(Transaction_ID, Fastag_ID) → No non-key attributes
+________________
+
+
+13. Transaction_Rate
+Composite Key:
+(Transaction_ID, Rate_ID) → No non-key attributes
