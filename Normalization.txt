@@ -1,0 +1,133 @@
+﻿Normalization
+BCNF Check:
+1. Toll_Plaza
+Candidate Keys:
+{ Plaza_ID }
+BCNF Check:
+For every functional dependency X → Y, X = Plaza_ID, which is a superkey. No partial or transitive dependencies exist.
+Verdict:
+IN BCNF. No decomposition needed.
+________________
+
+
+2. Toll_Booth
+Candidate Keys:
+{ Booth_ID }
+Alternate Candidate Key:
+{ Plaza_ID, Booth_Number }
+This alternate candidate key applies if Booth_Number is unique within each plaza.
+BCNF Check:
+The functional dependency:
+Booth_ID → Plaza_ID, Booth_Number, Status
+has Booth_ID as the determinant, which is a superkey.
+The alternate key functional dependency:
+(Plaza_ID, Booth_Number) → Booth_ID
+also has a superkey on the left-hand side.
+Therefore, all non-trivial functional dependencies satisfy the BCNF condition.
+Verdict:
+IN BCNF. No decomposition needed.
+________________
+
+
+3. Staff
+Candidate Keys:
+{ Staff_ID }
+BCNF Check:
+All attributes are fully functionally dependent on Staff_ID.
+Booth_ID is a foreign key and is not a determinant of other non-key attributes within the Staff relation. No transitive functional dependencies exist within the relation itself.
+Therefore, Staff_ID is the only determinant and is a superkey.
+Verdict:
+IN BCNF. No decomposition needed.
+________________
+
+
+4. Staff_Plaza
+Candidate Keys:
+{ Staff_ID, Plaza_ID }
+BCNF Check:
+The Staff_Plaza relation contains only key attributes and has no non-key attributes.
+A relation containing only key attributes is trivially in BCNF.
+Verdict:
+IN BCNF. No decomposition needed.
+________________
+
+
+5. Toll_Rate
+Candidate Keys:
+{ Rate_ID }
+Alternate Candidate Key:
+{ Plaza_ID, Vehicle_Type }
+BCNF Check:
+The functional dependencies are:
+Rate_ID → Plaza_ID, Vehicle_Type, Toll_Amount
+(Plaza_ID, Vehicle_Type) → Rate_ID, Toll_Amount
+For the first functional dependency, Rate_ID is the primary key and therefore a superkey.
+For the second functional dependency, { Plaza_ID, Vehicle_Type } is an alternate candidate key and therefore also a superkey.
+Both functional dependencies satisfy the BCNF condition.
+Verdict:
+IN BCNF. No decomposition needed.
+________________
+
+
+6. Vehicle
+Candidate Keys:
+{ Vehicle_ID }
+BCNF Check:
+The functional dependency is:
+Vehicle_ID → Vehicle_Number, Vehicle_Type, Owner_Name, Owner_Contact_Number
+The only determinant is Vehicle_ID, which is the primary key and therefore a superkey.
+No other non-trivial functional dependencies exist within the relation.
+Verdict:
+IN BCNF. No decomposition needed.
+________________
+
+
+7. Transaction
+Candidate Keys:
+{ Transaction_ID }
+BCNF Check:
+The functional dependency is:
+Transaction_ID → Vehicle_ID, Booth_ID, Transaction_Time, Amount_Paid, Payment_Mode
+The only determinant is Transaction_ID, which is the primary key and therefore a superkey.
+No other non-trivial functional dependencies exist within the relation.
+Verdict:
+IN BCNF. No decomposition needed.
+________________
+
+
+8. Monthly_Pass
+Candidate Keys:
+{ Pass_ID }
+BCNF Check:
+The functional dependency is:
+Pass_ID → Vehicle_ID, Plaza_ID, Expiry_Date, Pass_Fee
+Pass_ID is the only determinant and is the primary key of the relation. Therefore, Pass_ID is a superkey.
+There are no partial or transitive dependencies within the relation.
+Verdict:
+IN BCNF. No decomposition needed.
+________________
+
+
+9. Fastag_Account
+Candidate Keys:
+{ Fastag_ID }
+BCNF Check:
+The functional dependency is:
+Fastag_ID → Vehicle_ID, Balance, Bank_Name
+Fastag_ID is the only determinant and is the primary key of the relation. Therefore, it is a superkey.
+No BCNF violations exist.
+Verdict:
+IN BCNF. No decomposition needed.
+________________
+
+
+10. Violation
+Candidate Keys:
+{ Violation_ID }
+BCNF Check:
+The functional dependency is:
+Violation_ID → Vehicle_ID, Plaza_ID, Violation_Type, Violation_Date, Penalty_Amount
+Violation_ID is the only determinant and is the primary key of the relation. Therefore, it is a superkey.
+No partial or transitive dependencies exist within the relation.
+Verdict:
+IN BCNF. No decomposition needed.
