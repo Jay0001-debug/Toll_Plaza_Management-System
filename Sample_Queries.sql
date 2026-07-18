@@ -106,18 +106,7 @@ FROM FASTag_Account fa
 GROUP BY fa.Bank_Name
 ORDER BY Account_Count DESC;
 
--- Q5.2: Total penalties collected per plaza
-SELECT
-    tp.Plaza_Name,
-    COUNT(viol.Violation_ID) AS Total_Violations,
-    SUM(viol.Penalty_Amount) AS Total_Penalty_Collected
-FROM Violation viol
-JOIN Toll_Plaza tp ON viol.Plaza_ID = tp.Plaza_ID
-GROUP BY tp.Plaza_ID, tp.Plaza_Name
-ORDER BY Total_Penalty_Collected DESC;
-
-
--- Q4.1: Top 5 most active FASTag accounts by number of trips
+-- Q4.2: Top 5 most active FASTag accounts by number of trips
 SELECT
     fa.Fastag_ID,
     v.Vehicle_Number,
