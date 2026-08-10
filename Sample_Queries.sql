@@ -106,21 +106,6 @@ FROM FASTag_Account fa
 GROUP BY fa.Bank_Name
 ORDER BY Account_Count DESC;
 
--- Q4.2: Top 5 most active FASTag accounts by number of trips
-SELECT
-    fa.Fastag_ID,
-    v.Vehicle_Number,
-    v.Owner_Name,
-    fa.Bank_Name,
-    COUNT(tf.Transaction_ID) AS Total_FASTag_Trips
-FROM Transaction_FASTag tf
-JOIN FASTag_Account fa ON tf.Fastag_ID  = fa.Fastag_ID
-JOIN Vehicle        v  ON fa.Vehicle_ID = v.Vehicle_ID
-GROUP BY fa.Fastag_ID, v.Vehicle_Number, v.Owner_Name, fa.Bank_Name
-ORDER BY Total_FASTag_Trips DESC
-LIMIT 5;
-
-
 -- ============================================================
 -- SCENARIO 5: VIOLATION & PENALTY MANAGEMENT
 -- ============================================================
